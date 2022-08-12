@@ -246,6 +246,7 @@ func (engine *Engine) SecureJsonPrefix(prefix string) *Engine {
 // LoadHTMLGlob loads HTML files identified by glob pattern
 // and associates the result with HTML renderer.
 func (engine *Engine) LoadHTMLGlob(pattern string) {
+	fmt.Println("载入html模版")
 	left := engine.delims.Left
 	right := engine.delims.Right
 	templ := template.Must(template.New("").Delims(left, right).Funcs(engine.FuncMap).ParseGlob(pattern))
@@ -371,7 +372,7 @@ func iterate(path, method string, routes RoutesInfo, root *node) RoutesInfo {
 // Note: this method will block the calling goroutine indefinitely unless an error happens.
 func (engine *Engine) Run(addr ...string) (err error) {
 	defer func() { debugPrintError(err) }()
-
+	fmt.Println("此包已经被个人仓库 replace 过")
 	if engine.isUnsafeTrustedProxies() {
 		debugPrint("[WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.\n" +
 			"Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.")
